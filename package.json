@@ -1,0 +1,35 @@
+{
+  "name": "replog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/src/library.js",
+  "types": "build/src/library.d.ts",
+  "scripts": {
+    "start": "node -r source-map-support/register build/src",
+    "test": "mocha build/test/bootstrap.js \"build/test/**/*.test.js\"",
+    "posttest": "tslint --project ./ --fix",
+    "pretest": "npm run build",
+    "build": "tsc",
+    "prebuild": "rm -rf build && cpx 'src/**/!(*.ts)' build/src -v && cpx 'test/**/!(*.ts)' build/test -v",
+    "dev": "nodemon -e ts,handlebars,json,yml -i build --exec \"npm test\""
+  },
+  "author": "Julian Haeger",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "source-map-support": "^0.5.6"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/lodash": "^4.14.110",
+    "@types/mocha": "^5.2.3",
+    "@types/node": "^10.5.1",
+    "chai": "^4.1.2",
+    "cpx": "^1.5.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "tslint": "^5.10.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^2.9.2"
+  }
+}
